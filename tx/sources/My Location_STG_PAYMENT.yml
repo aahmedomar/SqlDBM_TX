@@ -1,0 +1,47 @@
+sourceId: e06d7218-7268-470c-b6e9-40bef2194475
+name: STG_PAYMENT
+locationId: faaaa1fe-fce4-4a33-a21a-82ad771d6ed2
+description: ''
+columns:
+  - name: ID
+    dataType: number(38,0)
+    id: 5d19758c-39c1-4d68-8c50-1eeb58f03c75
+    allowNulls: true
+    defaultValue: ''
+    description: ''
+  - name: ORDERID
+    dataType: number(38,0)
+    id: 79e82c5c-8409-4703-8c27-6d9eb1a96bed
+    allowNulls: true
+    defaultValue: ''
+    description: ''
+  - name: PAYMENTMETHOD
+    dataType: varchar(16777216)
+    id: 0bb3bba0-5f4c-4754-aabc-0fa27ba69407
+    allowNulls: true
+    defaultValue: ''
+    description: ''
+  - name: STATUS
+    dataType: varchar(16777216)
+    id: e0771802-a49b-4170-be41-1910e3fb08d0
+    allowNulls: true
+    defaultValue: ''
+    description: ''
+  - name: AMOUNT
+    dataType: number(38,0)
+    id: 203394d0-39c8-4819-a3cb-3f10d035afa6
+    allowNulls: true
+    defaultValue: ''
+    description: ''
+  - name: CREATED
+    dataType: date
+    id: 8dcb92c6-375f-4602-b9b6-807d28cec68f
+    allowNulls: true
+    defaultValue: ''
+    description: ''
+  - name: _BATCHED_AT
+    dataType: timestamp_ntz(9)
+    id: 8f849f68-24f3-42d2-a9c7-f8de6e3e5fad
+    allowNulls: true
+    defaultValue: ''
+    description: ''

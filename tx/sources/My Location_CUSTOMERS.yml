@@ -1,0 +1,23 @@
+sourceId: 9f1e431a-f683-4691-82e5-7afddff83213
+name: CUSTOMERS
+locationId: faaaa1fe-fce4-4a33-a21a-82ad771d6ed2
+description: ''
+columns:
+  - name: ID
+    dataType: number(38,0)
+    id: 030812bb-75d7-4e75-abb9-a549b9f553f0
+    allowNulls: true
+    defaultValue: ''
+    description: ''
+  - name: FIRST_NAME
+    dataType: varchar(16777216)
+    id: ad4afbb9-f3df-4f00-9f47-3ec9e49bb8aa
+    allowNulls: true
+    defaultValue: ''
+    description: ''
+  - name: LAST_NAME
+    dataType: varchar(16777216)
+    id: f16a4180-42cb-4c0a-9389-e032c17f9dcf
+    allowNulls: true
+    defaultValue: ''
+    description: ''

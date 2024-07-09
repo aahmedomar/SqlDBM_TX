@@ -1,0 +1,35 @@
+sourceId: 7280ff80-4665-479e-bb5c-2381fc459d18
+name: ORDERS
+locationId: faaaa1fe-fce4-4a33-a21a-82ad771d6ed2
+description: ''
+columns:
+  - name: ID
+    dataType: number(38,0)
+    id: f5248bc0-8f3b-4f41-856b-5eb9b94c77b7
+    allowNulls: true
+    defaultValue: ''
+    description: ''
+  - name: USER_ID
+    dataType: number(38,0)
+    id: 40b29429-d934-4daf-8cb2-ec4e690b7592
+    allowNulls: true
+    defaultValue: ''
+    description: ''
+  - name: ORDER_DATE
+    dataType: date
+    id: 587521f0-9892-41bf-a78e-f106c6afef2c
+    allowNulls: true
+    defaultValue: ''
+    description: ''
+  - name: STATUS
+    dataType: varchar(16777216)
+    id: 1c2ba276-6b80-485d-88d4-44dc9fc4d019
+    allowNulls: true
+    defaultValue: ''
+    description: ''
+  - name: _ETL_LOADED_AT
+    dataType: timestamp_ntz(9)
+    id: d59bde9c-bb2d-4e09-93b3-e13118db852a
+    allowNulls: true
+    defaultValue: CURRENT_TIMESTAMP()
+    description: ''
