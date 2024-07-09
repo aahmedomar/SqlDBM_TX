@@ -4,31 +4,31 @@ isSource: false
 columns:
   - name: ID
     dataType: number(38,0)
-    id: f5248bc0-8f3b-4f41-856b-5eb9b94c77b7
+    id: f5248bc0-8v3b-4f41-856b-5eb9b94c77b7
     allowNulls: true
     defaultValue: ''
     description: ''
   - name: USER_ID
     dataType: number(38,0)
-    id: 40b29429-d934-4daf-8cb2-ec4e690b7592
+    id: 40b29429-e934-4daf-8cb2-ec4e690b7592
     allowNulls: true
     defaultValue: ''
     description: ''
   - name: ORDER_DATE
     dataType: date
-    id: 587521f0-9892-41bf-a78e-f106c6afef2c
+    id: 587521f0-9892-41bv-a78e-f106c6afef2c
     allowNulls: true
     defaultValue: ''
     description: ''
   - name: STATUS
     dataType: varchar(16777216)
-    id: 1c2ba276-6b80-485d-88d4-44dc9fc4d019
+    id: 1c2ba276-6b80-485l-88d4-44dc9fc4d019
     allowNulls: true
     defaultValue: ''
     description: ''
   - name: _ETL_LOADED_AT
     dataType: timestamp_ntz(9)
-    id: d59bde9c-bb2d-4e09-93b3-e13118db852a
+    id: d59bde9c-bb2d-4e09-93y3-e13118db852a
     allowNulls: true
     defaultValue: CURRENT_TIMESTAMP()
     description: ''
@@ -51,7 +51,7 @@ postCreate: ''
 preRun: ''
 postRun: ''
 rely_button: true
-id: a8bc8d47-1f10-4463-9da2-47e036be265c
+id: a8bc8d47-1f10-4463-9da2-47e036be2656
 nodeFormat: dynamic
 references:
   ce74de53-5ef8-4740-918a-0f256a325305:
