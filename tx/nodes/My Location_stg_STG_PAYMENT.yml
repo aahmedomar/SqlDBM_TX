@@ -1,0 +1,80 @@
+name: stg_STG_PAYMENT
+color: '#FC7917'
+isSource: false
+columns:
+  - name: ID
+    allowNulls: true
+    dataType: number(38,0)
+    defaultValue: ''
+    description: ''
+    id: 2bbb541b-7a6d-40a1-91f7-657a715eaf23
+  - name: ORDERID
+    allowNulls: true
+    dataType: number(38,0)
+    defaultValue: ''
+    description: ''
+    id: 7e6448ad-722a-4659-ba57-9e09881fd32d
+  - name: PAYMENTMETHOD
+    allowNulls: true
+    dataType: varchar(16777216)
+    defaultValue: ''
+    description: ''
+    id: 6b9bc0f8-f939-4a78-8ad2-c97612ef3254
+  - name: STATUS
+    allowNulls: true
+    dataType: varchar(16777216)
+    defaultValue: ''
+    description: ''
+    id: 5c248812-6b3d-4897-8e44-0981cb63a419
+  - name: AMOUNT
+    allowNulls: true
+    dataType: number(38,0)
+    defaultValue: ''
+    description: ''
+    id: 021f3d3e-e60b-4442-8452-58d244f1cb91
+  - name: CREATED
+    allowNulls: true
+    dataType: date
+    defaultValue: ''
+    description: ''
+    id: a292a40b-8247-4a97-b062-9e76abc9c949
+  - name: _BATCHED_AT
+    allowNulls: true
+    dataType: timestamp_ntz(9)
+    defaultValue: ''
+    description: ''
+    id: a00e7267-a4b1-4cea-b36d-d37860af337c
+  - name: __load_date
+    allowNulls: false
+    dataType: date
+    defaultValue: current_date()
+    description: load date
+    id: 1484093e-4eee-4159-bc85-ceeb9a8da2f4
+logic: |-
+  SELECT
+      STG_PAYMENT.ID AS "ID",
+      STG_PAYMENT.ORDERID AS "ORDERID",
+      STG_PAYMENT.PAYMENTMETHOD AS "PAYMENTMETHOD",
+      STG_PAYMENT.STATUS AS "STATUS",
+      STG_PAYMENT.AMOUNT AS "AMOUNT",
+      STG_PAYMENT.CREATED AS "CREATED",
+      STG_PAYMENT._BATCHED_AT AS "_BATCHED_AT",
+      current_date() AS "__load_date"
+  FROM {{ref('My Location', 'STG_PAYMENT')}} "STG_PAYMENT"
+description: ''
+logicalName: STG_PAYMENT dimension
+columnSets: []
+templateId: f0b6697a-7eb4-4925-9f72-ec5eb6318733
+materialization: table
+storageLocationId: faaaa1fe-fce4-4a33-a21a-82ad771d6ed2
+preCreate: ''
+postCreate: ''
+preRun: ''
+postRun: ''
+rely_button: true
+id: 904bcf6f-40ce-4c5b-8a8c-cc1ce7a06d00
+nodeFormat: dynamic
+references:
+  e2207c45-3e9d-44b9-ae41-baabfb8810da:
+    parentTableId: e06d7218-7268-470c-b6e9-40bef2194475
+    id: e2207c45-3e9d-44b9-ae41-baabfb8810da

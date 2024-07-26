@@ -1,0 +1,52 @@
+name: stg_CUSTOMERS
+color: '#FC7917'
+isSource: false
+columns:
+  - name: ID
+    allowNulls: true
+    dataType: number(38,0)
+    defaultValue: ''
+    description: ''
+    id: 0415d66d-b843-46cf-95ee-19457135499c
+  - name: FIRST_NAME
+    allowNulls: true
+    dataType: varchar(16777216)
+    defaultValue: ''
+    description: ''
+    id: 3e7b2a51-c33e-4b03-aaa6-160ee37763f8
+  - name: LAST_NAME
+    allowNulls: true
+    dataType: varchar(16777216)
+    defaultValue: ''
+    description: ''
+    id: 09e04c0c-03a6-4d49-85f5-7a8be5720942
+  - name: __load_date
+    allowNulls: false
+    dataType: date
+    defaultValue: current_date()
+    description: load date
+    id: ec2a42e4-1576-456a-98b5-e9b537b013e8
+logic: |-
+  SELECT
+      CUSTOMERS.ID AS "ID",
+      CUSTOMERS.FIRST_NAME AS "FIRST_NAME",
+      CUSTOMERS.LAST_NAME AS "LAST_NAME",
+      current_date() AS "__load_date"
+  FROM {{ref('My Location', 'CUSTOMERS')}} "CUSTOMERS"
+description: ''
+logicalName: CUSTOMERS dimension
+columnSets: []
+templateId: f0b6697a-7eb4-4925-9f72-ec5eb6318733
+materialization: table
+storageLocationId: faaaa1fe-fce4-4a33-a21a-82ad771d6ed2
+preCreate: ''
+postCreate: ''
+preRun: ''
+postRun: ''
+rely_button: true
+id: 023bde47-b042-4cde-9ea7-1416174cc4dc
+nodeFormat: dynamic
+references:
+  2df9a715-105d-4553-ae8d-3453fb5ed3dc:
+    parentTableId: 9f1e431a-f683-4691-82e5-7afddff83213
+    id: 2df9a715-105d-4553-ae8d-3453fb5ed3dc
