@@ -1,4 +1,4 @@
-name: Generate SQL files
+name: Generate SQL files into Athena
 
 on:
   push:
