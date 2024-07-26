@@ -1,31 +1,42 @@
 name: stg_CUSTOMERS
-color: '#FC7917'
+id: a8bc8d47-1f10-4463-9da2-47e036be265c
+storageLocationId: faaaa1fe-fce4-4a33-a21a-82ad771d6ed2
+templateId: f0b6697a-7eb4-4925-9f72-ec5eb6318733
+materialization: table
 isSource: false
 columns:
   - name: ID
-    allowNulls: true
     dataType: NUMBER(38,0)
+    allowNulls: true
     defaultValue: ''
     description: ''
     id: 68a5dddc-cacc-46b8-93dc-8049a750bb65
   - name: FIRST_NAME
-    allowNulls: true
     dataType: VARCHAR(16777216)
+    allowNulls: true
     defaultValue: ''
     description: ''
     id: 09fc56e1-45a8-48cf-b25c-ef71515ec3a3
   - name: LAST_NAME
-    allowNulls: true
     dataType: VARCHAR(16777216)
+    allowNulls: true
     defaultValue: ''
     description: ''
     id: a441a60c-93f9-43d7-bc1e-352497e909c7
   - name: __load_date
-    allowNulls: false
     dataType: DATE
+    allowNulls: false
     defaultValue: current_date()
     description: load date
     id: ec027e08-6c48-4819-ad9a-a1bebcf4dfb6
+columnSets: []
+nodeFormat: dynamic
+preCreate: ''
+postCreate: ''
+preRun: ''
+postRun: ''
+rely_button: true
+color: '#FC7917'
 logic: |-
   SELECT
       CUSTOMERS.ID AS "ID",
@@ -35,17 +46,6 @@ logic: |-
   FROM {{ref('My Location', 'CUSTOMERS')}} "CUSTOMERS"
 description: ''
 logicalName: CUSTOMERS dimension
-columnSets: []
-templateId: f0b6697a-7eb4-4925-9f72-ec5eb6318733
-materialization: table
-storageLocationId: faaaa1fe-fce4-4a33-a21a-82ad771d6ed2
-preCreate: ''
-postCreate: ''
-preRun: ''
-postRun: ''
-rely_button: true
-id: a8bc8d47-1f10-4463-9da2-47e036be265c
-nodeFormat: dynamic
 references:
   ce74de53-5ef8-4740-918a-0d256a325305:
     parentTableId: 9f1e431a-f683-4691-82e5-7afddff83213
