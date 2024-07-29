@@ -1,6 +1,0 @@
-SELECT
-    CUSTOMERS.ID AS "ID",
-    CUSTOMERS.FIRST_NAME AS "FIRST_NAME",
-    CUSTOMERS.LAST_NAME AS "LAST_NAME",
-    current_date() AS "__load_date"
-FROM {{ref('My Location', 'CUSTOMERS')}} "CUSTOMERS"

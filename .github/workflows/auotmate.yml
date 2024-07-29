@@ -33,17 +33,22 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.x'
+        python-version: '3.11'
     
     - name: List repository contents
       run: |
         pwd
         ls -R
     
-    - name: Install dependencies
+    - name: Install system dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install PyYAML
+        sudo apt-get update
+        sudo apt-get install -y libpq-dev
+    
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip setuptools wheel
+        pip install PyYAML==6.0.1
     
     - name: Run SQL generation script
       run: python adept/main.py
@@ -94,31 +99,39 @@ jobs:
 
     - name: Install dbt dependencies
       run: |
-        pip install dbt-core dbt-athena-community
+        python -m venv dbt_env
+        source dbt_env/bin/activate
+        pip install --upgrade pip setuptools wheel
+        pip install dbt-core==1.5.0 dbt-athena-community==1.5.0
         cd athena
         dbt deps
     
     - name: Run dbt debug
       run: |
+        source dbt_env/bin/activate
         cd athena
         dbt debug
 
     - name: Run dbt compile
       run: |
+        source dbt_env/bin/activate
         cd athena
         dbt compile
 
     - name: Run dbt run
       run: |
+        source dbt_env/bin/activate
         cd athena
         dbt run
 
     - name: Run dbt test
       run: |
+        source dbt_env/bin/activate
         cd athena
         dbt test 
 
     - name: Run dbt clean
       run: |
+        source dbt_env/bin/activate
         cd athena
         dbt clean
