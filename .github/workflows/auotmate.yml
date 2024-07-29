@@ -1,18 +1,30 @@
-name: Generate SQL files
+name: Generate SQL files and Run dbt Models
 
 on:
   push:
     branches:
-      - '*'  # This will trigger the workflow on push to any branch
+      - '*'
   pull_request:
     branches:
-      - '*'  # This will trigger the workflow on pull requests to any branch
+      - '*'
 
 permissions:
   contents: write
 
+env:
+  DBT_PROJECT_NAME: athena
+  DTB_AWS_ACCESS_KEY: ${{ secrets.DTB_AWS_ACCESS_KEY }}
+  DTB_AWS_SERCET_ACESS: ${{ secrets.DTB_AWS_SERCET_ACESS }}
+  DTB_PROFILE_DB: ${{ secrets.DTB_PROFILE_DB }}
+  DTB_REGION_NAME: ${{ secrets.DTB_REGION_NAME }}
+  DTB_PROFILE_SCHEMA: ${{ secrets.DTB_PROFILE_SCHEMA }}
+  DTB_S3_DATA_DIR: ${{ secrets.DTB_S3_DATA_DIR }}
+  DTB_S3_STAGING_DIR: ${{ secrets.DTB_S3_STAGING_DIR }}
+  DBT_NUM_THREADS: 20
+  DBT_QUERY_TAG: dbt_ci_pipe
+
 jobs:
-  generate-sql:
+  generate-sql-and-run-dbt:
     runs-on: ubuntu-latest
     
     steps:
@@ -45,3 +57,68 @@ jobs:
         git push https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git
       env:
         PAT: ${{ secrets.PAT }}
+
+    - name: Create string
+      run: |
+        MY_STRING=$(cat << EOF
+        ${{ env.DBT_PROJECT_NAME }}:
+          target: dev
+          outputs:
+            dev:
+              type: athena
+              aws_access_key_id: ${{ env.DTB_AWS_ACCESS_KEY }} 
+              aws_secret_access_key: ${{ env.DTB_AWS_SERCET_ACESS }}
+              database: ${{ env.DTB_PROFILE_DB }}
+              region_name: ${{ env.DTB_REGION_NAME }}
+              s3_data_dir: ${{ env.DTB_S3_DATA_DIR }}
+              s3_staging_dir: ${{ env.DTB_S3_STAGING_DIR }}
+              schema: ${{ env.DTB_PROFILE_SCHEMA }}
+              threads: ${{ env.DBT_NUM_THREADS }}
+        EOF
+        )
+        MY_STRING="${MY_STRING//'%'/'%25'}"
+        MY_STRING="${MY_STRING//$'\n'/'%0A'}"
+        MY_STRING="${MY_STRING//$'\r'/'%0D'}"
+        echo "content=$MY_STRING" >> $GITHUB_OUTPUT
+      id: my_string
+
+    - name: Display string
+      run: |
+        echo "The string is: ${{ steps.my_string.outputs.content }}"
+
+    - name: Create .dbt directory and profiles.yml 
+      run: |
+        mkdir -p /home/runner/.dbt
+        touch /home/runner/.dbt/profiles.yml
+        echo -e "${{ steps.my_string.outputs.content }}" >> /home/runner/.dbt/profiles.yml
+
+    - name: Install dbt dependencies
+      run: |
+        pip install dbt-athena
+        cd athena
+        dbt deps
+    
+    - name: Run dbt debug
+      run: |
+        cd athena
+        dbt debug
+
+    - name: Run dbt compile
+      run: |
+        cd athena
+        dbt compile
+
+    - name: Run dbt run
+      run: |
+        cd athena
+        dbt run
+
+    - name: Run dbt test
+      run: |
+        cd athena
+        dbt test 
+
+    - name: Run dbt clean
+      run: |
+        cd athena
+        dbt clean
