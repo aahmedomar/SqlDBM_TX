@@ -1,4 +1,4 @@
-name: Generate SQL files and Run dbt Models
+name: Generate SQL files and run dbt and push into athena
 
 on:
   push:
