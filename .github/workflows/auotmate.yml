@@ -79,6 +79,7 @@ jobs:
               schema: ${{ env.DTB_PROFILE_SCHEMA }}
               threads: ${{ env.DBT_NUM_THREADS }}
               type: athena
+          target: dev
         " > /home/runner/.dbt/profiles.yml
 
     - name: Install dbt dependencies
