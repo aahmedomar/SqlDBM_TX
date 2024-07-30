@@ -1,3 +1,28 @@
+name: Generate SQL files and Run dbt Models
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+
+permissions:
+  contents: write
+
+env:
+  DBT_PROJECT_NAME: athena
+  DTB_AWS_ACCESS_KEY: ${{ secrets.DTB_AWS_ACCESS_KEY }}
+  DTB_AWS_SECRET_ACCESS: ${{ secrets.DTB_AWS_SECRET_ACCESS }}
+  DTB_PROFILE_DB: ${{ secrets.DTB_PROFILE_DB }}
+  DTB_REGION_NAME: ${{ secrets.DTB_REGION_NAME }}
+  DTB_PROFILE_SCHEMA: ${{ secrets.DTB_PROFILE_SCHEMA }}
+  DTB_S3_DATA_DIR: ${{ secrets.DTB_S3_DATA_DIR }}
+  DTB_S3_STAGING_DIR: ${{ secrets.DTB_S3_STAGING_DIR }}
+  DBT_NUM_THREADS: 20
+  DBT_QUERY_TAG: dbt_ci_pipe
+
 jobs:
   generate-sql-and-run-dbt:
     runs-on: ubuntu-latest
