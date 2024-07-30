@@ -68,10 +68,8 @@ jobs:
         mkdir -p /home/runner/.dbt
         echo "
         ${{ env.DBT_PROJECT_NAME }}:
-          target: dev
           outputs:
             dev:
-              type: athena
               aws_access_key_id: ${{ env.DTB_AWS_ACCESS_KEY }}
               aws_secret_access_key: ${{ env.DTB_AWS_SECRET_ACCESS }}
               database: ${{ env.DTB_PROFILE_DB }}
@@ -80,6 +78,7 @@ jobs:
               s3_staging_dir: ${{ env.DTB_S3_STAGING_DIR }}
               schema: ${{ env.DTB_PROFILE_SCHEMA }}
               threads: ${{ env.DBT_NUM_THREADS }}
+              type: athena
         " > /home/runner/.dbt/profiles.yml
 
     - name: Install dbt dependencies
